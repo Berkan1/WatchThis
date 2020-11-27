@@ -12,7 +12,7 @@ const ratingSchema = new Schema({
         required: true
     },
     rating: {
-        type: Decimal128,
+        type: Number,
         required: true,
         min: 0,
         max: 10

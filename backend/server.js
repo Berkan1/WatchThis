@@ -17,6 +17,10 @@ connection.once('open', () => {
     console.log("MongoDB database connection established successfully");
 })
 
+const filmsRouter = require('./routes/films');
+
+app.use('/films', filmsRouter);
+
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 })
