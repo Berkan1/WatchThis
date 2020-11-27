@@ -59,11 +59,23 @@ router.route('/:id').post((req, res) => {
 });
 
 //Get user's review for a film
-router.route('/:id').get((req, res) => {
-    const user = req.body.user;
-
-    Rating.find({ user: user, film: req.params.id })
+router.route('/:user/:id').get((req, res) => {
+    Rating.find({ user: req.params.user, film: req.params.id })
     .then(film => res.json(film))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+//Get all users reviews
+router.route('/:user').get((req, res) => {
+    Rating.aggregate([
+        {$match: { "user": req.params.user } },
+        {$lookup: {
+            from: 'films',
+            localField: 'film',
+            foreignField: 'imdbID',
+            as: 'filmRatings'
+        }}
+    ]).then(ratings => res.json(ratings))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
