@@ -16,7 +16,7 @@ function Home() {
     <Container> 
         <Row>
             {films.map(film => 
-            <div class="col-md-4 col-sm-4 col-xs-12 film-padding">
+            <div className="col-md-4 col-sm-4 col-xs-12 film-padding">
       <FilmSummary 
         title={film.filmRatings[0].title}
         imdbID={film.filmRatings[0].imdbID}

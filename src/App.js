@@ -9,17 +9,28 @@ import LoginButton from '../src/components/login-button';
 import LogoutButton from '../src/components/logout-button';
 
 function App() {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated , isLoading } = useAuth0();
+
+  if(isLoading){
+    return (<div></div>);
+  }
 
   return (
-    <Container>
+    <div>
       <div className="main-body">
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <Link to="/">Home</Link>
-            <Link to="/profile">Profile</Link>
-            <Nav className="justify-content-end">
+        <BrowserRouter>
+        <div class="full-width">
+        <Container>
+        <Navbar bg="dark" variant="dark">
+        <Navbar.Brand href="/"><i className="glyphicon glyphicon-home"></i></Navbar.Brand>
+        <Navbar.Brand href="/profile">Add Rating</Navbar.Brand>
+        <Navbar.Brand href="/profile">My Ratings</Navbar.Brand>
+            <Nav className="log-btn">
           {isAuthenticated ? <LogoutButton /> : <LoginButton />}
-      </Nav>
+    </Nav>
+  </Navbar>
+  </Container>
+  </div>
             <Switch>
               <Route exact path='/' component={Home} />
               <Route exact path='/profile' component={Profile} />
@@ -29,7 +40,7 @@ function App() {
       <footer className="footer">
 
       </footer>
-    </Container>
+      </div>
   );
 }
 

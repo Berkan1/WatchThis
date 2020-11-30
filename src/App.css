@@ -1,5 +1,33 @@
 .background {
-  background-color: #110016;
+  background-color: #F2D8F0;
+}
+
+.full-width {
+  background-color: #343a40;
+}
+
+.navbar-nav {
+  margin: 7.5px 0px;
+}
+
+.log-btn {
+  float: right;
+}
+
+.navbar {
+  margin-bottom: 0px;
+}
+
+nav a {
+  color: white;
+}
+
+nav a:hover {
+  color: #D7D7D7;
+}
+
+a {
+  padding: 8px;
 }
 
 .film-padding {
