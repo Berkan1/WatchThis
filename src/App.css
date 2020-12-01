@@ -108,19 +108,26 @@ input {
 }
 
 @media (min-width: 768px) {
-  img {
+  .film-rows {
     height: 168px;
   }
 }
 
+@media (max-width: 767px) {
+  .film-col {
+    padding-left:15%; 
+    padding-right:15%;
+  }
+}
+
 @media (min-width: 992px) {
-  img {
+  .film-rows {
     height: 223px;
   }
 }
 
 @media (min-width: 1200px) {
-  img {
+  .film-rows {
     height: 273px;
   }
 }

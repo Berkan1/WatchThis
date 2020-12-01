@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import Axios from 'axios';
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
+import { Rating } from '@material-ui/lab';
 
 export const Film = (props) => {
     const [film, setFilm] = useState([]);
@@ -17,14 +18,33 @@ export const Film = (props) => {
 
 useEffect(() => {
     Axios.get(`/films/${user.nickname}/${props.match.params.id}`).then(res => {
-        setCurrentRating(res.data[0].rating);
+        if(res.data[0]){
+            setCurrentRating(res.data[0].rating);
+        }
+        else {
+            setCurrentRating(0);
+        }
+        
           });
 }, []);
 
   return (
     <Container>
-      <p>{film.Actors}</p>
-      <p>{currentRating}</p>
+      <Row className="film-col">
+      <div className="col-md-4 col-sm-4">
+        <img src={film.Poster} alt={film.Title} onError={(e)=>{e.target.onerror = null; e.target.src="/no-image.png"}} width="100%"></img>
+    </div>
+    <div className="col-md-8 col-sm-8">
+        <p><strong>Title: </strong>{film.Title}</p>
+        <p><strong>Year: </strong>{film.Year}</p>
+        <p><strong>Director: </strong>{film.Director}</p>
+        <p><strong>Genre: </strong>{film.Genre}</p>
+        <p><strong>Runtime: </strong>{film.Runtime}</p>
+        <p><strong>Plot: </strong>{film.Plot}</p>
+        <Rating name="hover-feedback" value={currentRating} max={10} precision={0.5} size="large" onChange={(event, newValue) => {console.log(newValue);}}/>
+        <p>{currentRating}</p>
+    </div>
+    </Row>
     </Container>
   );
 };

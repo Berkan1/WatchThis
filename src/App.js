@@ -15,7 +15,7 @@ function App() {
     <div>
       <div className="main-body">
         <BrowserRouter>
-        <div class="full-width">
+        <div className="full-width">
         <Container>
         <Navbar bg="dark" variant="dark">
         <Navbar.Brand><Link to='/'><i className="glyphicon glyphicon-home"></i></Link></Navbar.Brand>
