@@ -12,9 +12,9 @@ export const Search = () => {
     event.preventDefault();
     setSearchValue(event.target[0].value);
   }
-
+  
   useEffect(() => {
-    Axios.get(`http://www.omdbapi.com/?s=${searchValue}&type=movie&apikey=6c27148`).then(res => {
+    Axios.get(`http://www.omdbapi.com/?s=${searchValue}&type=movie&apikey=${process.env.REACT_APP_OMDB_API_KEY}`).then(res => {
               setFilms(res.data.Search || []);
           });
 }, [searchValue]);

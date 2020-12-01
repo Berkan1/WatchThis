@@ -1,8 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, HashRouter, Switch, Route, Link } from 'react-router-dom';
 import Search from '../src/components/search';
 import Home from '../src/components/home';
+import Film from '../src/components/film-summary';
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { useAuth0 } from '@auth0/auth0-react';
 import LoginButton from '../src/components/login-button';
@@ -30,7 +30,7 @@ function App() {
             <Switch>
               <Route exact path='/' component={Home} />
               <Route exact path='/search' component={Search} />
-              <Route exact path='/film/:id' component={Search} />
+              <Route exact path='/film/:id' component={Film} />
             </Switch>
         </BrowserRouter>
       </div>
