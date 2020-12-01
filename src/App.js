@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, HashRouter, Switch, Route, Link } from 'react-router-dom';
-import Profile from '../src/components/profile';
+import Search from '../src/components/search';
 import Home from '../src/components/home';
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { useAuth0 } from '@auth0/auth0-react';
@@ -11,10 +11,6 @@ import LogoutButton from '../src/components/logout-button';
 function App() {
   const { isAuthenticated , isLoading } = useAuth0();
 
-  if(isLoading){
-    return (<div></div>);
-  }
-
   return (
     <div>
       <div className="main-body">
@@ -22,18 +18,19 @@ function App() {
         <div class="full-width">
         <Container>
         <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="/"><i className="glyphicon glyphicon-home"></i></Navbar.Brand>
-        <Navbar.Brand href="/profile">Add Rating</Navbar.Brand>
-        <Navbar.Brand href="/profile">My Ratings</Navbar.Brand>
+        <Navbar.Brand><Link to='/'><i className="glyphicon glyphicon-home"></i></Link></Navbar.Brand>
+        <Navbar.Brand><Link to='/search'>Add Rating</Link></Navbar.Brand>
+        <Navbar.Brand><Link to='/profile'>My Ratings</Link></Navbar.Brand>
             <Nav className="log-btn">
-          {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+            {isLoading ? <div></div> : (isAuthenticated ? <LogoutButton /> : <LoginButton />)}
     </Nav>
   </Navbar>
   </Container>
   </div>
             <Switch>
               <Route exact path='/' component={Home} />
-              <Route exact path='/profile' component={Profile} />
+              <Route exact path='/search' component={Search} />
+              <Route exact path='/film/:id' component={Search} />
             </Switch>
         </BrowserRouter>
       </div>

@@ -18,16 +18,29 @@
   margin-bottom: 0px;
 }
 
+.navbar-brand a {
+  text-decoration: none !important;
+}
+
 nav a {
   color: white;
 }
 
-nav a:hover {
+nav a:hover, a:focus {
   color: #D7D7D7;
 }
 
-a {
-  padding: 8px;
+@media(max-width: 411px) {
+  .navbar-brand {
+    padding: 8px;
+    font-size: 14px;
+    line-height: 35px;
+  }
+}
+
+h1 {
+  padding-left: 10px;
+  padding-bottom: 10px;
 }
 
 .film-padding {
@@ -40,4 +53,74 @@ a {
 .individual-film-padding {
   padding-left: 5px;
   padding-right: 0px;
+}
+
+.bad-rating {
+  font-weight: bold;
+  color: crimson;
+}
+
+.ok-rating {
+  font-weight: bold;
+  color: goldenrod;
+}
+
+.good-rating {
+  font-weight: bold;
+  color: green;
+}
+
+form {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.btn-search {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  vertical-align: top !important;
+  background-color: #343a40;
+  color: white;
+}
+
+.btn-dark:hover, .btn-dark:focus {
+  color: white;
+}
+
+.btn-dark {
+  background-color: #343a40;
+  color: white;
+}
+
+input {
+  height: 34px;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  text-indent: 0.5rem;
+  width: 300px;
+}
+
+@media(max-width: 400px) {
+  input {
+    width: 80% !important;
+  }
+}
+
+@media (min-width: 768px) {
+  img {
+    height: 168px;
+  }
+}
+
+@media (min-width: 992px) {
+  img {
+    height: 223px;
+  }
+}
+
+@media (min-width: 1200px) {
+  img {
+    height: 273px;
+  }
 }

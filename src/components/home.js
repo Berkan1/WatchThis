@@ -14,6 +14,11 @@ function Home() {
 
   return (
     <Container> 
+      <Row>
+        <Col>
+        <h1>3 most recent film ratings:</h1>
+        </Col>
+      </Row>
         <Row>
             {films.map(film => 
             <div className="col-md-4 col-sm-4 col-xs-12 film-padding">
