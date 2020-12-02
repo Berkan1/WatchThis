@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function FilmSummary(props) {
-    const { imdbID, title, director, genre, poster, imdbRating, plot, runtime, year, rating, user} = props;
+    const { imdbID, title, poster, year, rating, user} = props;
     var ratingClass = "bad-rating";
     if(rating > 7){
         ratingClass = "good-rating";
@@ -19,7 +19,7 @@ function FilmSummary(props) {
             <div className="col-md-6 col-sm-6 col-xs-6">
                 <p><strong>Title: </strong>{title}</p>
                 <p><strong>Year: </strong>{year}</p>
-                {rating ? <p>Rated <span className={ratingClass}>{rating}</span> by {user}</p> : <div></div>}
+                {rating != null ? <p>Rated <span className={ratingClass}>{rating}</span> by {user}</p> : <div></div>}
                 <Link to={`/film/${imdbID}`}>Rate this</Link>
             </div>
             </div>

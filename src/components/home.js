@@ -25,12 +25,7 @@ function Home() {
       <FilmSummary 
         title={film.filmRatings[0].title}
         imdbID={film.filmRatings[0].imdbID}
-        director={film.filmRatings[0].director}
-        genre={film.filmRatings[0].genre}
-        imdbRating={film.filmRatings[0].imdbRating}
-        plot={film.filmRatings[0].plot}
         poster={film.filmRatings[0].poster}
-        runtime={film.filmRatings[0].runtime}
         year={film.filmRatings[0].year}
         user={film.user}
         rating={film.rating}

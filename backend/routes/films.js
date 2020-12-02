@@ -75,7 +75,7 @@ router.route('/:user').get((req, res) => {
             foreignField: 'imdbID',
             as: 'filmRatings'
         }}
-    ]).then(ratings => res.json(ratings))
+    ]).sort({updatedAt:-1}).then(ratings => res.json(ratings))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
