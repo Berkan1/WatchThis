@@ -39,7 +39,7 @@ nav a:hover, a:focus {
   }
 }
 
-h1 {
+h1, h2 {
   padding-left: 10px;
   padding-bottom: 10px;
   margin-top: 0px;
@@ -118,6 +118,7 @@ input {
   .film-col {
     padding-left:15%; 
     padding-right:15%;
+    padding-bottom: 60px;
   }
 }
 
@@ -131,4 +132,18 @@ input {
   .film-rows {
     height: 273px;
   }
+}
+
+.MuiAlert-message {
+  font-size: 15px;
+}
+
+.welcome {
+  padding: 4px 24px;
+  border-left: 5px solid #F8873B;
+  background-color: #FFCC85;
+  font-size: 2rem;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
 }

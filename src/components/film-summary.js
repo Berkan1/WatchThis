@@ -3,10 +3,17 @@ import { Container, Row, Col } from "react-bootstrap";
 import Axios from 'axios';
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import { Rating } from '@material-ui/lab';
+import MuiAlert from '@material-ui/lab/Alert';
+import { Snackbar } from '@material-ui/core';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 export const Film = (props) => {
     const [film, setFilm] = useState([]);
     const [currentRating, setCurrentRating] = useState(0);
+    const [open, setOpen] = useState(false);
     const { user } = useAuth0();
 
     var ratingClass = "bad-rating";
@@ -17,9 +24,21 @@ export const Film = (props) => {
         ratingClass = "ok-rating";
     }
 
+    const handleClick = () => {
+      setOpen(true);
+    };
+  
+    const handleClose = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  
+      setOpen(false);
+    };
+
     const addRating = (filmRating) => {
       Axios.post(`/films/${film.imdbID}`, {
-        user: user.nickname,
+        user: user["https://example/username"],
         rating: filmRating,
         title: film.Title,
     director: film.Director,
@@ -39,7 +58,7 @@ export const Film = (props) => {
 }, []);
 
 useEffect(() => {
-    Axios.get(`/films/${user.nickname}/${props.match.params.id}`).then(res => {
+    Axios.get(`/films/${user["https://example/username"]}/${props.match.params.id}`).then(res => {
         if(res.data[0]){
             setCurrentRating(res.data[0].rating);
         }
@@ -64,7 +83,7 @@ useEffect(() => {
         <p><strong>Runtime: </strong>{film.Runtime}</p>
         <p><strong>Plot: </strong>{film.Plot}</p>
         <p><strong>IMDb rating: </strong><span className={ratingClass}>{film.imdbRating}</span></p>
-        <Rating name="hover-feedback" 
+        <Rating name="editable-rating" 
           value={currentRating} 
           max={10} 
           precision={0.5} 
@@ -73,11 +92,16 @@ useEffect(() => {
             if(!newValue){
               newValue=0;
             };
-            console.log(newValue);
+            handleClick();
             setCurrentRating(newValue);
             addRating(newValue); 
           }}
         />
+        <Snackbar open={open} autoHideDuration={1500} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success">
+          Your rating was saved!
+        </Alert>
+      </Snackbar>
     </div>
     </Row>
     </Container>
