@@ -1,3 +1,7 @@
+.main-body {
+  min-height: 100vh;
+}
+
 .background {
   background-color: #F2D8F0;
 }
@@ -150,4 +154,19 @@ input {
 
 img {
   margin-bottom: 10px;
+}
+
+footer {
+  background-color: #343a40;
+  padding: 13px;
+  margin-top: auto;
+}
+
+footer a {
+  color: white;
+  margin-right: 25px;
+}
+
+footer a:hover, a:focus {
+  color: white;
 }
