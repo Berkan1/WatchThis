@@ -6,7 +6,7 @@ function PrivacyPolicy() {
       <Container>
         <h1 style={{ textAlign:`center` }}>Privacy Policy</h1>
         <p>Last updated December 04, 2020</p>
-        <p>I, Berkan Chelikhan, am committed to protecting your personal information and your right to privacy. When you create an account on the website www.watchthis.com (the "Website"), you are consenting to the collecting of your personal data, the type of personal data, reason for collection and how that data is used will be outlined in this document.</p>
+        <p>I, Berkan Chelikhan, am committed to protecting your personal information and your right to privacy. When you create an account on the website https://watch-this-project.herokuapp.com/ (the "Website"), you are consenting to the collecting of your personal data, the type of personal data, reason for collection and how that data is used will be outlined in this document.</p>
         <p><strong>Personal data that is collected</strong></p>
         <p>When creating an account for this website, you will need to provide an email address, username and password for authentication. This data is saved once an account is created and cookies are used to facilitate the log in process. Once logged in, the IP address used for signing in is also recorded. Authenticated users of this website will be able to save a score from 0-10 for a film of their choice, and this personal opinion on a film will be visible to other users of the site and associated to your account.</p>
         <p><strong>Method used for data collection and security used</strong></p>
