@@ -12,18 +12,18 @@ function FilmSummary(props) {
         ratingClass = "ok-rating";
     }
 
-  return (
-      <div>
+    return (
+        <div>
             <div className="col-md-6 col-sm-6 col-xs-6 individual-film-padding">
-            <Link to={`/film/${imdbID}`}>
-            <img class="film-rows" src={poster} alt={title} onError={(e)=>{e.target.onerror = null; e.target.src="/no-image.png"}} width="100%"></img>
-            </Link>
+                <Link to={`/film/${imdbID}`}>
+                    <img class="film-rows" src={poster} alt={title} onError={(e)=>{e.target.onerror = null; e.target.src="/no-image.png"}} width="100%"></img>
+                </Link>
             </div>
             <div className="col-md-6 col-sm-6 col-xs-6">
                 <p><strong>Title: </strong>{title}</p>
                 <p><strong>Year: </strong>{year}</p>
                 {user != null 
-                ? (<div><p>Rated <span className={ratingClass}>{rating}</span> by <Link to={`/user/${user}`}>{user}</Link></p> <Link to={`/film/${imdbID}`}>Rate this</Link></div>)
+                ? (<div><p>Rated <span className={ratingClass}>{rating}</span> by <Link to='/search'></Link>{user}</p> <Link to={`/film/${imdbID}`}>Rate this</Link></div>)
                 : (rating != null 
                     ? <Rating name="editable-rating" 
                     value={rating} 
@@ -31,12 +31,12 @@ function FilmSummary(props) {
                     precision={0.5} 
                     size="small" 
                     readonly
-                  />
-                    : <Link to={`/film/${imdbID}`}>Rate this</Link>)
+                    />
+                : <Link to={`/film/${imdbID}`}>Rate this</Link>)
                 }
             </div>
-            </div>
-  );
+        </div>
+    );
 }
 
 export default FilmSummary;

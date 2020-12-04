@@ -41,69 +41,68 @@ export const Film = (props) => {
         user: user["https://example/username"],
         rating: filmRating,
         title: film.Title,
-    director: film.Director,
-    genre: film.Genre,
-    plot: film.Plot,
-    runtime: film.Runtime,
-    imdbRating: film.imdbRating,
-    poster: film.Poster,
-    year: film.Year
-    });
+        director: film.Director,
+        genre: film.Genre,
+        plot: film.Plot,
+        runtime: film.Runtime,
+        imdbRating: film.imdbRating,
+        poster: film.Poster,
+        year: film.Year
+      });
     }
   
   useEffect(() => {
     Axios.get(`http://www.omdbapi.com/?i=${props.match.params.id}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`).then(res => {
-              setFilm(res.data);
-          });
-}, []);
+      setFilm(res.data);
+    });
+  }, []);
 
-useEffect(() => {
+  useEffect(() => {
     Axios.get(`/films/${user["https://example/username"]}/${props.match.params.id}`).then(res => {
-        if(res.data[0]){
-            setCurrentRating(res.data[0].rating);
-        }
-        else {
-            setCurrentRating(0);
-        }
-        
-          });
-}, []);
+      if(res.data[0]){
+        setCurrentRating(res.data[0].rating);
+      }
+      else {
+        setCurrentRating(0);
+      }
+    });
+  }, []);
 
   return (
     <Container>
       <Row className="film-col">
-      <div className="col-md-4 col-sm-4">
-        <img id="testing" src={film.Poster} alt={film.Title} onError={(e)=>{e.target.onerror = null; e.target.src="/no-image.png"}} width="100%"></img>
-    </div>
-    <div className="col-md-8 col-sm-8">
-        <p><strong>Title: </strong><span >{film.Title}</span></p>
-        <p><strong>Year: </strong>{film.Year}</p>
-        <p><strong>Director: </strong>{film.Director}</p>
-        <p><strong>Genre: </strong>{film.Genre}</p>
-        <p><strong>Runtime: </strong>{film.Runtime}</p>
-        <p><strong>Plot: </strong>{film.Plot}</p>
-        <p><strong>IMDb rating: </strong><span className={ratingClass}>{film.imdbRating}</span></p>
-        <Rating name="editable-rating" 
-          value={currentRating} 
-          max={10} 
-          precision={0.5} 
-          size="large" 
-          onChange={(event, newValue) => {
-            if(!newValue){
-              newValue=0;
-            };
-            handleClick();
-            setCurrentRating(newValue);
-            addRating(newValue); 
-          }}
-        />
-        <Snackbar open={open} autoHideDuration={1500} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success">
-          Your rating was saved!
-        </Alert>
-      </Snackbar>
-    </div>
-    </Row>
+        <div className="col-md-4 col-sm-4">
+          <img id="testing" src={film.Poster} alt={film.Title} onError={(e)=>{e.target.onerror = null; e.target.src="/no-image.png"}} width="100%"></img>
+        </div>
+        <div className="col-md-8 col-sm-8">
+          <p><strong>Title: </strong><span >{film.Title}</span></p>
+          <p><strong>Year: </strong>{film.Year}</p>
+          <p><strong>Director: </strong>{film.Director}</p>
+          <p><strong>Genre: </strong>{film.Genre}</p>
+          <p><strong>Runtime: </strong>{film.Runtime}</p>
+          <p><strong>Plot: </strong>{film.Plot}</p>
+          <p><strong>IMDb rating: </strong><span className={ratingClass}>{film.imdbRating}</span></p>
+          <Rating name="editable-rating" 
+            value={currentRating} 
+            max={10} 
+            precision={0.5} 
+            size="large" 
+            onChange={(event, newValue) => {
+              if(!newValue){
+                newValue=0;
+              };
+              handleClick();
+              setCurrentRating(newValue);
+              addRating(newValue); 
+            }}
+          />
+          <Snackbar open={open} autoHideDuration={1500} onClose={handleClose}>
+            <Alert onClose={handleClose} severity="success">
+              Your rating was saved!
+            </Alert>
+          </Snackbar>
+        </div>
+      </Row>
     </Container>
   );
 };

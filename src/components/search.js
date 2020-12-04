@@ -5,8 +5,8 @@ import { withAuthenticationRequired } from '@auth0/auth0-react';
 import FilmSummary from './film-rating-summary';
 
 export const Search = () => {
-    const [searchValue, setSearchValue] = useState([]);
-    const [films, setFilms] = useState([]);
+  const [searchValue, setSearchValue] = useState([]);
+  const [films, setFilms] = useState([]);
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
@@ -15,33 +15,33 @@ export const Search = () => {
   
   useEffect(() => {
     Axios.get(`http://www.omdbapi.com/?s=${searchValue}&type=movie&apikey=${process.env.REACT_APP_OMDB_API_KEY}`).then(res => {
-              setFilms(res.data.Search || []);
-          });
-}, [searchValue]);
+      setFilms(res.data.Search || []);
+    });
+  }, [searchValue]);
 
   return (
     <Container>
       <form onSubmit={handleSearchSubmit}>
-          <input 
-            id="searchFilm"
-            type="text"
-            placeholder="Enter a film name"
-            required 
-          />
-          <button className="btn btn-dark btn-search" aria-label="Search">
-            <i className="glyphicon glyphicon-search"></i>
-          </button>
+        <input 
+          id="searchFilm"
+          type="text"
+          placeholder="Enter a film name"
+          required 
+        />
+        <button className="btn btn-dark btn-search" aria-label="Search">
+          <i className="glyphicon glyphicon-search"></i>
+        </button>
       </form>
       {films.map(film => 
-      <div className="col-md-4 col-sm-4 col-xs-12 film-padding">
+        <div className="col-md-4 col-sm-4 col-xs-12 film-padding">
           <FilmSummary 
           title={film.Title}
           poster={film.Poster}
           year={film.Year}
           imdbID={film.imdbID}
-      />
-      </div>
-        )}
+          />
+        </div>
+      )}
     </Container>
   );
 };

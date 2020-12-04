@@ -15,9 +15,9 @@ function Home() {
   const { isAuthenticated, user } = useAuth0();
 
   useEffect(() => {
-      Axios.get('/films').then(res => {
-                setFilms(res.data);
-			});
+    Axios.get('/films').then(res => {
+      setFilms(res.data);
+		});
   }, []);
 
   return (
@@ -30,26 +30,23 @@ function Home() {
       </Row>
       <Row>
         <Col>
-        <h1>3 most recent film ratings:</h1>
+          <h1>3 most recent film ratings:</h1>
         </Col>
       </Row>
-        <Row>
-            {films.map(film => 
-            <div className="col-md-4 col-sm-4 col-xs-12 film-padding">
-      <FilmSummary 
-        title={film.filmRatings[0].title}
-        imdbID={film.filmRatings[0].imdbID}
-        poster={film.filmRatings[0].poster}
-        year={film.filmRatings[0].year}
-        user={film.user}
-        rating={film.rating}
-    />
-    </div>
-      )}
-      
-        </Row>
-      
-      
+      <Row>
+        {films.map(film => 
+          <div className="col-md-4 col-sm-4 col-xs-12 film-padding">
+            <FilmSummary 
+              title={film.filmRatings[0].title}
+              imdbID={film.filmRatings[0].imdbID}
+              poster={film.filmRatings[0].poster}
+              year={film.filmRatings[0].year}
+              user={film.user}
+              rating={film.rating}
+            />
+          </div>
+        )}
+      </Row>
     </Container>
   );
 }
