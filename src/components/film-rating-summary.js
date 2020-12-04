@@ -23,7 +23,7 @@ function FilmSummary(props) {
                 <p><strong>Title: </strong>{title}</p>
                 <p><strong>Year: </strong>{year}</p>
                 {user != null 
-                ? (<div><p>Rated <span className={ratingClass}>{rating}</span> by {user}</p> <Link to={`/film/${imdbID}`}>Rate this</Link></div>)
+                ? (<div><p>Rated <span className={ratingClass}>{rating}</span> by <Link to={`/user/${user}`}>{user}</Link></p> <Link to={`/film/${imdbID}`}>Rate this</Link></div>)
                 : (rating != null 
                     ? <Rating name="editable-rating" 
                     value={rating} 
