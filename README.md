@@ -1,4 +1,4 @@
-This web app is available at https://berkan1.github.io/cocktails.
+This web app is available at https://watch-this-project.herokuapp.com/.
 The purpose of this project was to get the hang of using the MERN stack and use this to create a full stack single page application.
 
 ## Libraries used
