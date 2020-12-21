@@ -10,5 +10,5 @@ The purpose of this project was to get the hang of using the MERN stack and use 
 
 ## Acknowledgements
 
-* The cocktail data used in this project was provided by **OMDb API**.
+* The film data used in this project was provided by **OMDb API**.
 * All software used is open-source under the **MIT License**.
